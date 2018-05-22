@@ -1,0 +1,55 @@
+<ion-content>
+
+    <div class="page-title">
+      تواصل معنا <img src="../../assets/imgs/more6-hover.png" >
+    </div>  
+
+
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+ 
+        
+      
+      <div class="txtbx">
+        <div class="txtbx-white">
+        <ion-input [(ngModel)]="userInfo.name" formControlName="name" type="text"
+                     id="name" spellcheck="false" autocapitalize="off" placeholder="الإسم">
+          </ion-input>
+        </div>
+      </div>          
+
+      <div class="txtbx">
+          <div class="txtbx-white">
+          <ion-input email [(ngModel)]="userInfo.email" formControlName="email"
+                     type="text" id="email" spellcheck="false" autocapitalize="off" placeholder="البريد الالكتروني">
+          </ion-input>
+        </div>
+      </div>
+
+
+      <div class="txtbx">
+          <div class="txtbx-white">
+          <ion-input [(ngModel)]="userInfo.phone" formControlName="phone" type="text" id="phone" placeholder="رقم الهاتف">
+          </ion-input>
+        </div>
+      </div>
+
+      <div class="txtbx">
+          <div class="txtbx-white">
+          <ion-textarea  [(ngModel)]="userInfo.message" formControlName="message" type="text" id="message" placeholder="الرسالة">
+          </ion-textarea >
+         </div>
+      </div>
+      
+      <div class="txtbx1"  id="btn" >
+        <div class="txtbx-white">
+        <button type="submit" block primary>أرسل</button>
+        </div>
+      </div>
+      <div id="spinner">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+      
+
+      </form>
+   </ion-content>

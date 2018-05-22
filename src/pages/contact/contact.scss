@@ -1,0 +1,58 @@
+page-contact {
+    
+   #spinner{
+       display: none;
+       text-align: center;
+   }
+
+    .text-input-ios {
+        margin: 1px 0px;
+        padding: 5px;
+        font-family: 'GESSTwoLight-Light';
+    }
+    .text-input-md {
+        margin: 1px 8px;
+        padding: 5px;
+        font-family: 'GESSTwoLight-Light';
+    }
+
+    
+    ion-textarea {
+        height: 100px;
+    }
+
+    .txtbx{
+        margin: 13px;
+        background-image: url("../../assets/imgs/bg1.png");
+        padding: 5px 5px;
+    }
+
+
+    .txtbx1{
+        margin: 13px;
+        background-image: url("../../assets/imgs/bg1.png");
+        padding: 5px 5px;
+        display: inline-block;
+    }
+
+    .txtbx-white{
+        
+        background-color: #fff;
+    }
+
+    .txtbx input,.txtbx textarea{
+        direction: rtl;
+        text-align: right;
+    }
+
+    button{
+        background-color: transparent;
+        color: #646464;
+        font-family: 'GESSTwoLight-Light';
+    }
+
+    ::-webkit-input-placeholder { 
+        color: #000;
+      }
+ 
+}

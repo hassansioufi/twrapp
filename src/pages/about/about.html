@@ -1,0 +1,28 @@
+
+<ion-content>
+
+ <div class="page-title">
+        تعرّف علينا <img src="../../assets/imgs/more5-hover.png" >
+     </div>  
+  <div id="about-spinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" spinner="crescent">
+      <ion-refresher-content
+      refreshingSpinner="crescent"
+      refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="about-items">
+    <div class="about-item" *ngFor="let post of posts">
+       <div class="about-item-title">{{ post.title }}</div>
+       <div class="about-item-text">{{ post.text }}</div>
+    </div>
+  </div>
+
+
+</ion-content>
+
+

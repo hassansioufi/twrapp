@@ -1,0 +1,315 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+
+@font-face {
+    font-family: 'GESSTwoLight-Light';
+    src: url('../assets/fonts/GESSTwoLight-Light.eot?#iefix') format('embedded-opentype'),  url('../assets/fonts/GESSTwoLight-Light.otf')  format('opentype'),
+           url('../assets/fonts/GESSTwoLight-Light.woff') format('woff'), url('../assets/fonts/GESSTwoLight-Light.ttf')  format('truetype'), url('../assets/fonts/GESSTwoLight-Light.svg#GESSTwoLight-Light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GESSTwoMedium-Medium';
+    src: url('../assets/fonts/GESSTwoMedium-Medium.eot?#iefix') format('embedded-opentype'),  url('../assets/fonts/GESSTwoMedium-Medium.otf')  format('opentype'),
+           url('../assets/fonts/GESSTwoMedium-Medium.woff') format('woff'), url('../assets/fonts/GESSTwoMedium-Medium.ttf')  format('truetype'), url('../assets/fonts/GESSTwoMedium-Medium.svg#GESSTwoMedium-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ }
+
+ ion-app.ios,ion-app.md {
+  font-family: 'GESSTwoMedium-Medium' !important;
+ }
+
+ /****Header CSS****/
+ /*overrides*/
+ .toolbar-md,.toolbar-ios {
+  padding: 0px;
+}
+
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+  background-image: none !important;
+}
+
+.toolbar-background-md{
+  background-color: #f3f4f4;
+}
+/*overrides*/
+
+.col-xs-7{
+  width:62%;
+}
+
+.col-xs-5{
+  width:38%;
+}
+
+.header-logo-container{
+  text-align: center;
+  padding-top: 7px;
+  display: block;
+  height: 74px;
+}
+
+.header-logo{
+  width:100%;
+  max-width: 85px
+}
+
+.live-logo-container{
+  background-color: #0d426d;
+  padding: 5px 10px;
+  position: relative;
+  text-align: center;
+  height: 74px;
+}
+
+.live-logo-line{
+  width: 2px;
+  height: 100%;
+  background-color: #02c3e7;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.live-logo{
+  width:100%;
+  max-width: 200px
+}
+/****Header CSS ****/
+
+
+
+ /****Tabs****/
+.tabs-md .tabbar,.tabs-ios .tabbar{
+    background-color: none !important;
+    background-image: url("../assets/imgs/tab-bg.png");
+    background-size: 100% 100%;
+    border-top: 1px solid #a7a6a6;
+    font-family: 'GESSTwoMedium-Medium';
+}
+
+.tab-button{
+    border-right:1px solid #a7a6a6;
+    padding-bottom: 4px !important;
+}
+
+a.tab-button:last-child{
+    border-right:0px solid #a7a6a6; 
+}
+
+.tabs-md .tab-button-icon {
+  font-size: 3.4rem;
+}
+
+.tabs-md .tab-button,.tabs-ios .tab-button {
+  color: #2e2e2e;
+}
+
+
+
+.tabs-md .tab-button[aria-selected="true"],.tabs-md .tab-button[aria-selected="true"] .tab-button-icon ,.tabs-ios .tab-button[aria-selected="true"]{
+    color: #0f436e;
+}
+
+
+.tabs-md[tabsLayout="icon-top"] .has-icon .tab-button-text {
+    margin-top: 0px;
+}
+
+.tabbar, .tabs-ios, .tabs-md , .tabs-wp{
+    .tab-button-icon {
+        background-repeat:no-repeat;
+        background-position:center;
+        height:35px;
+        width:35px;
+        background-size:contain;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        &:before {
+            display:none;
+        }
+    }
+}
+
+.tabs-ios .tab-button{
+  font-size: 12px;
+}
+
+.tabs-ios {
+  a[aria-selected=false]{
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/imgs/tab1.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+      background-image: url(../assets/imgs/tab2.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+      background-image: url(../assets/imgs/tab3.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+      background-image: url(../assets/imgs/tab4.png);
+    }
+  }
+ a[aria-selected=true] {
+  .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    background-image: url(../assets/imgs/tab1-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+    background-image: url(../assets/imgs/tab2-hover.png);
+  }
+
+  .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+    background-image: url(../assets/imgs/tab3-hover.png);
+  }
+
+  .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+    background-image: url(../assets/imgs/tab4-hover.png);
+  }
+
+  }
+}
+
+.tabs-md {
+  a[aria-selected=false]{
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/imgs/tab1.png);
+    }
+    .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+      background-image: url(../assets/imgs/tab2.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+      background-image: url(../assets/imgs/tab3.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+      background-image: url(../assets/imgs/tab4.png);
+    }
+
+  }
+
+ a[aria-selected=true] {
+  .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    background-image: url(../assets/imgs/tab1-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+    background-image: url(../assets/imgs/tab2-hover.png);
+  }
+
+  .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+    background-image: url(../assets/imgs/tab3-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+    background-image: url(../assets/imgs/tab4-hover.png);
+  }
+
+  
+  }
+}
+
+.tabs-wp {
+  a[aria-selected=false]{
+
+    .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+      background-image: url(../assets/imgs/tab1.png);
+    }
+    .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+      background-image: url(../assets/imgs/tab2.png);
+    }
+
+    .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+      background-image: url(../assets/imgs/tab3.png);
+    }
+    .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+      background-image: url(../assets/imgs/tab4.png);
+    }
+
+    
+  }
+
+ a[aria-selected=true] {
+  .tab-button-icon[ng-reflect-name=home], .tab-button-icon[aria-label=home] {
+    background-image: url(../assets/imgs/tab1-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=listennow], .tab-button-icon[aria-label=listennow] {
+    background-image: url(../assets/imgs/tab2-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=programs], .tab-button-icon[aria-label=programs] {
+    background-image: url(../assets/imgs/tab3-hover.png);
+  }
+  .tab-button-icon[ng-reflect-name=more], .tab-button-icon[aria-label=more] {
+    background-image: url(../assets/imgs/tab4-hover.png);
+  }
+
+  }
+}
+
+.tabs-md .tab-button[aria-selected="true"],.tabs-ios .tab-button[aria-selected="true"] {
+  border-bottom: 3px solid #02c3e7
+}
+
+.tabs-md .tab-button[aria-selected="false"],.tabs-ios .tab-button[aria-selected="false"] {
+  border-bottom: 3px solid transparent
+}
+
+/****Tabs****/
+
+
+.page-title{
+  background-color: #02c3e7;
+  color: #0d426d;
+  padding: 8px;
+  text-align: center;
+  font-size: 21px;
+}
+
+.page-title img{
+  transform: translate(0,25%);
+  height: 25px;
+}
+
+.spinner-ios-crescent circle {
+  stroke: #0d426d;
+}
+
+.has-refresher > .scroll-content{
+  border-top: 0px;
+}
+
+ion-content{
+ // margin-top: 74px;
+}
+
+.ios ion-tab > .ion-page > ion-content.statusbar-padding:first-child .scroll-content{
+  padding-top: 0px;
+}
+
+.scroll-content {
+  top: 77px;
+}
+
+ion-refresher {
+  top:77px;
+}
+

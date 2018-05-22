@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="page-title">
+    الترانيم <img src="../../assets/imgs/more3-hover.png" >
+  </div>
+
+  <div id="music-spinner">
+      <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" spinner="crescent">
+    <ion-refresher-content
+    refreshingSpinner="crescent"
+    refreshingText=""></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="tracks-items">
+    <div class="track-item  {{wp==post.file ? 'track-item-active' : ''}}" *ngFor="let post of posts" (click)='playTrack(post.file,post.name)'>
+        {{ post.name }} <span>{{ post.artist }}</span>
+    </div>
+  </div>
+
+</ion-content>
