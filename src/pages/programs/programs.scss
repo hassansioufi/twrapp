@@ -1,3 +1,37 @@
-page-contact {
+page-programs {
 
+  .program-item{
+      padding: 3px;
+      border:1px solid #f3f4f2;
+      border-radius: 3px;
+      margin: 25px;
+  }
+
+  .program-bg{
+      background-image: url("../../assets/imgs/bg2.png");
+      padding: 11px;
+  }
+
+  .program-bg img{
+      opacity: 0.85;
+  }
+
+  .program-desc{
+      text-align: right;
+      direction: rtl;
+      color: #631961;
+      font-family: 'GESSTwoLight-Light';
+      font-size: 14px;
+  }
+  
+  .program-desc span{
+    font-family: 'GESSTwoMedium-Medium';
+  }
+  
+  .ib{
+  }
+
+  .swiper-slide img{
+      width: 100%;
+  }
 }

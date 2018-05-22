@@ -1,22 +1,30 @@
 <ion-content>
   
+  <div class="page-title">
+       الاجتماعي
+  </div>
+
   <span (click)='goToPrev()'><<</span> 
   <span (click)='goToNext()'>>></span> 
 
-
-
+</ion-content>
 
 <ion-slides>
-    <ion-slide>
-      <h1>Slide 1</h1>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 2</h1>
-    </ion-slide>
-    <ion-slide>
-      <h1>Slide 3</h1>
-    </ion-slide>
-  </ion-slides></ion-content>
 
+    <ion-slide *ngFor="let post of posts" >
+      <div class="program-item">
+       <div class="program-bg"> 
+        <div class="ib">
+          <img src="{{post.img}}"/>
+           <div class="program-desc">
+             <span>"{{post.title}}"</span>
+             {{post.text}}
+           </div>
+        </div>
+       </div>
+      </div>
+    </ion-slide>
+
+</ion-slides>
 
 

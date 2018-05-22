@@ -3,6 +3,9 @@ import { NavController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
+import { Http} from '@angular/http';
+import 'rxjs/add/operator/map';
+
 @Component({
   selector: 'page-programs',
   templateUrl: 'programs.html'
@@ -10,11 +13,20 @@ import { Slides } from 'ionic-angular';
 export class ProgramsPage {
  
   @ViewChild(Slides) slides: Slides;
-  
-  
-  
-  constructor(public navCtrl: NavController) {
+  posts: any;
+  api="http://arabicprograms.org/api/programs.php";
+
+  constructor(public http: Http,public navCtrl: NavController) {
     
+    this.http.get(this.api).map(res => res.json()).subscribe(
+      data => {
+        this.posts = data;
+      },
+      err => {
+        /** Error or internet problem **/
+      }
+    );
+
   }
 
   goToPrev() {

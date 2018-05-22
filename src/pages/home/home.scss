@@ -1,5 +1,27 @@
 page-home {
     
+    .btn{
+        background-color: #f3f4f4;
+        border:1px solid #bdbdbd;
+        border-radius: 6px;
+        text-align: center;
+    }
+    
+    .active{
+        display: none;
+    }
+    
+    .btn:active{
+        background-color: #02c3e7;
+    }
+    .btn:active .active{
+        display: inline-block;
+    }
+
+    .btn:active .first{
+        display: none;
+    }
+
     
 
 }
