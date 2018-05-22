@@ -30,13 +30,17 @@ export class ProgramsPage {
   }
 
   goToPrev() {
-    let currentIndex = this.slides.getActiveIndex();
-    this.slides.slideTo(currentIndex-1, 500);
+    if(!this.slides.isBeginning()){
+      let currentIndex = this.slides.getActiveIndex();
+      this.slides.slideTo(currentIndex-1, 500);
+    }
   }
 
   goToNext() {
-    let currentIndex = this.slides.getActiveIndex();
-    this.slides.slideTo(currentIndex+1, 500);
+    if(!this.slides.isEnd()){
+      let currentIndex = this.slides.getActiveIndex();
+      this.slides.slideTo(currentIndex+1, 500);
+    }
   }
 
 }

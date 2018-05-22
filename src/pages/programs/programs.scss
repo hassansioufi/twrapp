@@ -4,7 +4,7 @@ page-programs {
       padding: 3px;
       border:1px solid #f3f4f2;
       border-radius: 3px;
-      margin: 25px;
+      margin: 35px;
   }
 
   .program-bg{
@@ -29,9 +29,42 @@ page-programs {
   }
   
   .ib{
+
   }
 
   .swiper-slide img{
       width: 100%;
   }
+
+  ion-slides {
+      height: auto;
+  }
+
+  .arrows{
+      background-size: 100% 100%;
+      width: 17px;
+      height: 34px;
+      position: absolute;
+      top: 28vh;
+      z-index: 1000;
+  }
+
+  .l{
+    background-image: url("../../assets/imgs/larrow.png");
+    left: 7px;
+   }
+   .l:active{
+    background-image: url("../../assets/imgs/larrow-hover.png");
+   }
+
+   .r{
+    background-image: url("../../assets/imgs/rarrow.png");
+    right: 7px;
+ }
+
+ .r:active{
+    background-image: url("../../assets/imgs/rarrow-hover.png");
+ }
+
+
 }

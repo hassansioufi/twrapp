@@ -1,30 +1,38 @@
-<ion-content>
-  
-  <div class="page-title">
-       الاجتماعي
-  </div>
 
-  <span (click)='goToPrev()'><<</span> 
-  <span (click)='goToNext()'>>></span> 
-
-</ion-content>
-
-<ion-slides>
-
-    <ion-slide *ngFor="let post of posts" >
-      <div class="program-item">
-       <div class="program-bg"> 
-        <div class="ib">
-          <img src="{{post.img}}"/>
-           <div class="program-desc">
-             <span>"{{post.title}}"</span>
-             {{post.text}}
-           </div>
-        </div>
-       </div>
+  <ion-content>
+       
+      
+      <div class="page-title">
+          البرامج
       </div>
-    </ion-slide>
+    
+      <span class="arrows l" (click)='goToPrev()'></span> 
+      <span class="arrows r" (click)='goToNext()'></span> 
 
-</ion-slides>
+      <ion-slides>
+
+          <ion-slide *ngFor="let post of posts" >
+            <div class="program-item">
+             <div class="program-bg"> 
+              <div class="ib">
+                <img src="{{post.img}}"/>
+                 <div class="program-desc">
+                   <span>"{{post.title}}"</span>
+                   {{post.text}}
+                 </div>
+              </div>
+             </div>
+            </div>
+          </ion-slide>
+      
+      </ion-slides>
+
+
+      
+    </ion-content>
+
+  
+
+
 
 
