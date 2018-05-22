@@ -27,10 +27,7 @@ page-programs {
   .program-desc span{
     font-family: 'GESSTwoMedium-Medium';
   }
-  
-  .ib{
 
-  }
 
   .swiper-slide img{
       width: 100%;
@@ -49,22 +46,49 @@ page-programs {
       z-index: 1000;
   }
 
-  .l{
+  #l{
     background-image: url("../../assets/imgs/larrow.png");
     left: 7px;
+    display: none
    }
-   .l:active{
+   #l:active{
     background-image: url("../../assets/imgs/larrow-hover.png");
    }
 
-   .r{
+   #r{
     background-image: url("../../assets/imgs/rarrow.png");
     right: 7px;
+    display: none;
  }
 
- .r:active{
+ #r:active{
     background-image: url("../../assets/imgs/rarrow-hover.png");
  }
 
+ #spinner{
+    text-align: center;
+    margin-top: 25px;
+}
+
+#data{
+    display: none;
+}
+
+.btn-container{
+    text-align: center;
+}
+
+.btn-container div{
+    background-image: url("../../assets/imgs/btn.png");
+    background-size: 100% 100%;
+    color: #093157;
+    display: inline;
+    padding: 10px 18px;
+    font-size: 18px;
+}
+
+.btn-container div:active {
+    background-image: url("../../assets/imgs/btn-hover.png");
+}
 
 }

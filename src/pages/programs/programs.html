@@ -1,17 +1,20 @@
 
   <ion-content>
-       
       
       <div class="page-title">
           البرامج
       </div>
     
-      <span class="arrows l" (click)='goToPrev()'></span> 
-      <span class="arrows r" (click)='goToNext()'></span> 
+      <span class="arrows" id="l" (click)='goToPrev()'></span> 
+      <span class="arrows" id="r" (click)='goToNext()'></span> 
+      
+      <div id="spinner">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
 
-      <ion-slides>
+      <ion-slides id="data">
 
-          <ion-slide *ngFor="let post of posts" >
+          <ion-slide *ngFor="let post of posts" (click)='goToProgram(post.id,post.title)' >
             <div class="program-item">
              <div class="program-bg"> 
               <div class="ib">
@@ -26,6 +29,10 @@
           </ion-slide>
       
       </ion-slides>
+
+      <div class="btn-container">
+        <div>لائحة البرامج</div>
+      </div>
 
 
       

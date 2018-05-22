@@ -5,6 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { ListenNowPage } from '../pages/listennow/listennow';
+import { ProgramPage } from '../pages/program/program';
 import { ProgramsPage } from '../pages/programs/programs';
 import { HomePage } from '../pages/home/home';
 import { MorePage } from '../pages/more/more';
@@ -29,6 +30,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     MusicPage,
     ContactPage,
+    ProgramPage,
     TabsPage
   ],
   imports: [
@@ -48,6 +50,7 @@ import { IonicStorageModule } from '@ionic/storage';
     AboutPage,
     MusicPage,
     ContactPage,
+    ProgramPage,
     TabsPage
   ],
   providers: [
