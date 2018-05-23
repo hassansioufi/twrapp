@@ -1,0 +1,17 @@
+page-programdetails {
+    
+    .page-title{
+        direction: rtl;
+    }
+    .toolbar-background-ios,.toolbar-background-md {
+        background-color: transparent;
+    }
+
+    .bar-button-default-ios{
+        color: #0c517b;
+    }
+
+    .toolbar-ios,.toolbar-md{
+        min-height: auto;
+    }
+}

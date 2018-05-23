@@ -14,7 +14,8 @@ export class TabsPage {
   tab2Root = ListenNowPage;
   tab3Root = ProgramsPage;
   tab4Root = MorePage;
-
+  
+  
   constructor() {
 
   }

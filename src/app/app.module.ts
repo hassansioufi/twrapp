@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 
 import { ListenNowPage } from '../pages/listennow/listennow';
 import { ProgramPage } from '../pages/program/program';
+import { ProgramdetailsPage } from '../pages/programdetails/programdetails';
 import { ProgramsPage } from '../pages/programs/programs';
 import { HomePage } from '../pages/home/home';
 import { MorePage } from '../pages/more/more';
@@ -31,12 +32,13 @@ import { IonicStorageModule } from '@ionic/storage';
     MusicPage,
     ContactPage,
     ProgramPage,
+    ProgramdetailsPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{backButtonText: ''}),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -51,6 +53,7 @@ import { IonicStorageModule } from '@ionic/storage';
     MusicPage,
     ContactPage,
     ProgramPage,
+    ProgramdetailsPage,
     TabsPage
   ],
   providers: [

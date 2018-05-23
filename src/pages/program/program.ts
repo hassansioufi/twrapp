@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { ProgramdetailsPage } from '../programdetails/programdetails';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+
+import { Events } from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -10,12 +13,16 @@ import 'rxjs/add/operator/map';
   templateUrl: 'program.html',
 })
 export class ProgramPage {
+
   pagetitle=this.navParams.get("title");
+  programid=this.navParams.get("id");
   posts: any;
   api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
+  wp: any;
 
-  constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams) {
-    
+  constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
+
+
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
@@ -29,5 +36,30 @@ export class ProgramPage {
     
   }
 
+
+  playTrack(track: string,title: string){
+    if(track==this.wp){
+      this.events.publish('play:pause',"","");
+    }else{
+      this.events.publish('play:pause',title,track);
+    }
+    this.whoPlay();
+  }
+
+  whoPlay(){
+    this.wp = this.events.publish('who:play');
+  }
+
+  ionViewDidEnter () {
+    this.whoPlay();
+  }
+  
+  goToProgramDetails(){
+    this.navCtrl.push(ProgramdetailsPage,{
+      id: this.programid,
+      title: this.pagetitle
+    });
+  }
+  
 
 }

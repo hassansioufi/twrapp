@@ -40,5 +40,9 @@ export class MyApp {
 
     
   }
+
+  goToTab2(){
+    
+  }
   
 }

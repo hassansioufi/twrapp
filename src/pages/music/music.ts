@@ -42,9 +42,6 @@ export class MusicPage {
         /** Error or internet problem **/
       }
     );
-
-    
-
   }
 
   playTrack(track: string,title: string){
@@ -60,6 +57,8 @@ export class MusicPage {
     this.wp = this.events.publish('who:play');
   }
  
-  
+  ionViewDidEnter () {
+    this.whoPlay();
+  }
 
 }

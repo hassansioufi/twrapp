@@ -4,22 +4,35 @@
     {{pagetitle}}
   </div>
 
+
+  <div class="program-btn-container">
+      <div class="program-btn">موقع البرنامج</div>
+      <div class="program-btn" (click)='goToProgramDetails()' >عن البرنامج</div>
+  </div>
+
   <div id="program-spinner">
     <ion-spinner name="crescent"></ion-spinner>
   </div>
 
-    
+    <div></div>
     <div class="episode-item" *ngFor="let post of posts" >
+      <div class="favorite"></div>
       <ion-row>
 
           <ion-col col-4>
-              <img src="{{post.img}}" />
-            </ion-col>
+              <div class="img-container {{wp==post.file ? 'program-track-item-active' : ''}}"   (click)='playTrack(post.file,post.name)'>
+                  <span></span>
+                  <img src="{{post.img}}" width="100%" />
+              </div>
+              
+          </ion-col>
 
           <ion-col col-8>
-              {{post.title}}
-              <br />
-              <span>{{post.date}}</span>
+              <div class="eposide-text">
+                {{post.title}}
+               <br />
+               <span>{{post.date}}</span>
+              </div>
           </ion-col>
           
 
