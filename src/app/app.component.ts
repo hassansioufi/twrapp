@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component  } from '@angular/core';
+import { Platform,App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ListenNowPage } from '../pages/listennow/listennow';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,7 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
+  constructor(private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
     
     events.subscribe('play:pause',(title,track) => {
@@ -42,7 +43,7 @@ export class MyApp {
   }
 
   goToTab2(){
-    
+    this.app.getActiveNav().parent.select(1)
   }
   
 }

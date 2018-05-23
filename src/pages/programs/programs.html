@@ -14,11 +14,12 @@
 
       <ion-slides id="data">
 
-          <ion-slide *ngFor="let post of posts" (click)='goToProgram(post.id,post.title)' >
+          <ion-slide *ngFor="let post of posts" (click)='goToProgram(post.id,post.title,post.img)' >
             <div class="program-item">
              <div class="program-bg"> 
               <div class="ib">
-                <img src="{{post.img}}"/>
+                 <img class="size" src="{{post.img}}"/>
+                 <img src="../../assets/imgs/size.png"/>
                  <div class="program-desc">
                    <span>"{{post.title}}"</span>
                    {{post.text}}
@@ -30,7 +31,7 @@
       
       </ion-slides>
 
-      <div class="btn-container">
+      <div class="btn-container" id="b">
         <div>لائحة البرامج</div>
       </div>
 

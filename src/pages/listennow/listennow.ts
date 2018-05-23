@@ -8,7 +8,7 @@ import { NavController } from 'ionic-angular';
 export class ListenNowPage {
 
   constructor(public navCtrl: NavController) {
-
+    alert(document.getElementById("cc_stream_info_song").innerHTML);
   }
 
 }

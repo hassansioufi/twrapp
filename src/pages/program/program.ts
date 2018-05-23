@@ -16,6 +16,7 @@ export class ProgramPage {
 
   pagetitle=this.navParams.get("title");
   programid=this.navParams.get("id");
+  programimg=this.navParams.get("img");
   posts: any;
   api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
   wp: any;

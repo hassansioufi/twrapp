@@ -22,13 +22,16 @@ export class ProgramsPage {
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
+        //document.getElementById("b").style.display="block";
+        document.getElementById("b").classList.add("shw");
         document.getElementById("spinner").style.display="none";
-        document.getElementById("data").style.display="block";
-        document.getElementById("l").style.display="block";
-        document.getElementById("r").style.display="block";
+        document.getElementById("data").classList.add("shw");
+        document.getElementById("l").classList.add("shw");
+        document.getElementById("r").classList.add("shw");
+       
       },
       err => {
-        /** Error or internet problem **/
+        /** Error or internet problem **/alert("internet connection");
       }
     );
 
@@ -48,10 +51,11 @@ export class ProgramsPage {
     }
   }
 
-  goToProgram(i,t){
+  goToProgram(i,t,im){
     this.navCtrl.push(ProgramPage,{
       id: i,
-      title: t
+      title: t,
+      img: im
     });
   }
 

@@ -45,11 +45,11 @@ export class MorePage {
   }
 
   ionViewDidEnter () {
-alert('h');
+
   }
 
   ionViewWillLeave(){
-    alert('g');
+    
   }
 
 
