@@ -30,6 +30,11 @@ export class MyApp {
       let source = (document.getElementById('audioSource') as HTMLInputElement);
       return source.src;
     });
+
+    events.subscribe('play:volume',(v) => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement );
+      audio.volume=v;
+    });
     
     
     platform.ready().then(() => {

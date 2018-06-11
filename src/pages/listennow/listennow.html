@@ -1,7 +1,27 @@
-
 <ion-content padding>
-testing
 
-<iframe src="http://arabicprograms.org/api/live.php"></iframe>
+    <div class="border-div">
+       
+        <div class="listen-now">
+           
+            <img src="../../assets/imgs/listennow.jpg" width="100%" />
+
+            <div id="listen-now-text"></div>
+             
+        </div>
+    
+    </div>
+
+   
+
+    <ion-range [(ngModel)]="volume" (ionChange)="volumeControl($event)">
+        <ion-icon range-left color="grey" name="volume-up"></ion-icon>
+    </ion-range>
+
+    <div class="play-btn">
+       <div class="btn-play" (click)="livePlay()"></div>
+    </div>
+
+
 
 </ion-content>
