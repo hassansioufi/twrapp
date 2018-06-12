@@ -6,6 +6,9 @@ import 'rxjs/add/operator/map';
 
 import { Events } from 'ionic-angular';
 
+import { Storage } from '@ionic/storage';
+
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -21,7 +24,7 @@ export class ProgramPage {
   api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
   wp: any;
 
-  constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
+  constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
 
 
     this.http.get(this.api).map(res => res.json()).subscribe(
@@ -60,6 +63,41 @@ export class ProgramPage {
       id: this.programid,
       title: this.pagetitle
     });
+  }
+  
+  addtoFavorite(id){
+    this.storage.get('mf').then((val) => {
+      
+      if(val==null){
+        val="[]";
+        this.storage.set('mf', val);
+      }
+      
+      let val_array= JSON.parse(val);
+
+      if(!val_array.includes(id)){
+        val_array.push(id);
+        this.storage.set('mf', JSON.stringify(val_array));
+        this.showAlert("لقد تم إضافة الحلقة إلى المفضلات");
+       // alert(JSON.stringify(val_array));
+      }else{
+        const index = val_array.indexOf("id");
+        val_array.splice(index, 1);
+        this.storage.set('mf', JSON.stringify(val_array));
+        this.showAlert("لقد تم حذف الحلقة من المفضلات");
+        //alert(JSON.stringify(val_array));
+      }
+
+    });
+  }
+
+  showAlert(subtitle) {
+    const alert = this.alertCtrl.create({
+      title: "مفضلاتي",
+      subTitle: subtitle,
+      buttons: ['تم']
+    });
+    alert.present();
   }
   
 

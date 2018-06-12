@@ -58,6 +58,7 @@ page-program {
     background-position: center;
     background-size: 72% auto;
     background-repeat: no-repeat;
+    z-index: 100;
 }
 
 .episode-item:nth-child(2n) .favorite{
