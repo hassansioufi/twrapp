@@ -14,6 +14,9 @@ import { SocialPage } from '../pages/social/social';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { MusicPage } from '../pages/music/music';
+import { SearchPage } from '../pages/search/search';
+import { MyfavoritePage } from '../pages/myfavorite/myfavorite';
+import { ProgramslistPage } from '../pages/programslist/programslist';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -33,6 +36,9 @@ import { IonicStorageModule } from '@ionic/storage';
     ContactPage,
     ProgramPage,
     ProgramdetailsPage,
+    MyfavoritePage,
+    SearchPage,
+    ProgramslistPage,
     TabsPage
   ],
   imports: [
@@ -54,6 +60,9 @@ import { IonicStorageModule } from '@ionic/storage';
     ContactPage,
     ProgramPage,
     ProgramdetailsPage,
+    MyfavoritePage,
+    SearchPage,
+    ProgramslistPage,
     TabsPage
   ],
   providers: [

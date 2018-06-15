@@ -14,7 +14,7 @@
 
       <ion-slides id="data">
 
-          <ion-slide *ngFor="let post of posts" (click)='goToProgram(post.id,post.title,post.img)' >
+          <ion-slide *ngFor="let post of posts" (click)='goToProgram(post.id,post.title,post.img,post.full_text)' >
             <div class="program-item">
              <div class="program-bg"> 
               <div class="ib">

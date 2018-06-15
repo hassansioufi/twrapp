@@ -5,6 +5,8 @@ import { AboutPage } from '../about/about';
 import { MusicPage } from '../music/music';
 import { ContactPage } from '../contact/contact';
 import { ProgramsPage } from '../programs/programs';
+import { MyfavoritePage } from '../myfavorite/myfavorite';
+import { ProgramslistPage } from '../programslist/programslist';
 
 
 @Component({
@@ -35,6 +37,14 @@ export class MorePage {
         } 
         case "4": { 
           this.navCtrl.push(ContactPage);
+           break; 
+        } 
+        case "5": { 
+          this.navCtrl.push(MyfavoritePage);
+           break; 
+        } 
+        case "6": { 
+          this.navCtrl.push(ProgramslistPage);
            break; 
         } 
       } 

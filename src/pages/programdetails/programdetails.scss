@@ -1,17 +1,10 @@
 page-programdetails {
     
-    .page-title{
+
+    .program-detail{
         direction: rtl;
-    }
-    .toolbar-background-ios,.toolbar-background-md {
-        background-color: transparent;
-    }
-
-    .bar-button-default-ios{
-        color: #0c517b;
-    }
-
-    .toolbar-ios,.toolbar-md{
-        min-height: auto;
+        text-align: right;
+        padding:15px;
+        color: #0d426d;
     }
 }

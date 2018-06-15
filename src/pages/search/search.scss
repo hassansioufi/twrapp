@@ -1,0 +1,22 @@
+page-search {
+    .text-input-ios,.text-input-md {
+        direction: rtl;
+        text-align: right;
+        border-bottom: 1px solid #ededed;
+        margin: 11px 8px 11px 8px;
+        padding-bottom: 7px;
+        color:#626161;
+    }
+
+    .searchbar-ios.searchbar-left-aligned .searchbar-input,.searchbar-md.searchbar-left-aligned .searchbar-input {
+        direction: rtl;
+    }
+    
+    #spinner3{
+        text-align: center;
+        margin-top: 25px;
+        display: none;
+        width: 100%;
+    }
+
+}

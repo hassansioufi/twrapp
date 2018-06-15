@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { MorePage } from '../more/more';
-
-import { Storage } from '@ionic/storage';
+import { SearchPage } from '../search/search';
 
 @Component({
   selector: 'page-home',
@@ -10,13 +8,18 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController,private  storage: Storage) {
-    
+  constructor(public navCtrl: NavController) {
+  
 
-    this.storage.get('mf').then((val) => {
-       alert(val);
-    })
+  }
 
-  } 
+  goTo(p: string){
+    switch(p) { 
+     case "1": { 
+        this.navCtrl.push(SearchPage);
+        break; 
+     } 
+   }
+}
 
 }

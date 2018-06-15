@@ -20,6 +20,7 @@ export class ProgramPage {
   pagetitle=this.navParams.get("title");
   programid=this.navParams.get("id");
   programimg=this.navParams.get("img");
+  programfulltext=this.navParams.get("full_text");
   posts: any;
   api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
   wp: any;
@@ -61,7 +62,8 @@ export class ProgramPage {
   goToProgramDetails(){
     this.navCtrl.push(ProgramdetailsPage,{
       id: this.programid,
-      title: this.pagetitle
+      title: this.pagetitle,
+      full_text: this.programfulltext,
     });
   }
   
@@ -81,7 +83,7 @@ export class ProgramPage {
         this.showAlert("لقد تم إضافة الحلقة إلى المفضلات");
        // alert(JSON.stringify(val_array));
       }else{
-        const index = val_array.indexOf("id");
+        const index = val_array.indexOf(id);
         val_array.splice(index, 1);
         this.storage.set('mf', JSON.stringify(val_array));
         this.showAlert("لقد تم حذف الحلقة من المفضلات");
@@ -99,6 +101,5 @@ export class ProgramPage {
     });
     alert.present();
   }
-  
 
 }

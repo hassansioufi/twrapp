@@ -9,6 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProgramdetailsPage {
  
   title=this.navParams.get("title");
+  text=this.navParams.get("full_text");
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

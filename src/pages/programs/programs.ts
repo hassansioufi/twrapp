@@ -31,7 +31,7 @@ export class ProgramsPage {
        
       },
       err => {
-        /** Error or internet problem **/alert("internet connection");
+        /** Error or internet problem **/
       }
     );
 
@@ -51,11 +51,12 @@ export class ProgramsPage {
     }
   }
 
-  goToProgram(i,t,im){
+  goToProgram(i,t,im,ft){
     this.navCtrl.push(ProgramPage,{
       id: i,
       title: t,
-      img: im
+      img: im,
+      full_text: ft
     });
   }
 

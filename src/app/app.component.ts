@@ -35,13 +35,21 @@ export class MyApp {
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.volume=v;
     });
+
     
     
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      var aud = document.getElementById("audio") as HTMLVideoElement ;
+      aud.onended = function() {
+         let source = (document.getElementById('audioSource') as HTMLInputElement);
+         source.src = "";
+      }; 
+
       statusBar.styleDefault();
       splashScreen.hide();
+
     });
 
     
