@@ -405,3 +405,8 @@ background-image: url("../../assets/imgs/star-white.png");
 .toolbar-ios,.toolbar-md{
   min-height: auto;
 }
+
+#audio{
+  opacity: 0;
+  z-index: -1;
+}
