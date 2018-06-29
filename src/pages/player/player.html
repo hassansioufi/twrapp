@@ -1,0 +1,32 @@
+<ion-content>
+
+  <div class="page-title">
+      <ion-navbar>
+          البث المباشر
+      </ion-navbar>
+ </div>
+
+ <div class="pd20">
+      <div class="border-div">
+         <div class="listen-now">
+         
+          <img src="../../assets/imgs/listennow.jpg" width="100%" />
+          <div id="listen-now-text"></div>
+           
+         </div>
+      </div>
+  </div>
+
+ 
+  <div class="pd20 pdt0">
+    <ion-range [(ngModel)]="time" ng-value="50" (ionBlur)="setDuration($event)">
+        <div range-left id="seconds"></div>
+        <div range-right id="duration"></div>
+    </ion-range>
+
+    <div class="play-btn">
+       <div class="btn-play" (click)="livePlay()"></div>
+    </div>
+  </div>
+  
+</ion-content>

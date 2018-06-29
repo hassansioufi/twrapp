@@ -18,13 +18,13 @@ import { SearchPage } from '../pages/search/search';
 import { MyfavoritePage } from '../pages/myfavorite/myfavorite';
 import { ProgramslistPage } from '../pages/programslist/programslist';
 import { BiblePage } from '../pages/bible/bible';
+import { PlayerPage } from '../pages/player/player';
 import { ChaptersPage } from '../pages/chapters/chapters';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
-import { NativeAudio } from '@ionic-native/native-audio';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
     ProgramdetailsPage,
     MyfavoritePage,
     SearchPage,
+    PlayerPage,
     ProgramslistPage,
     BiblePage,
     ChaptersPage,
@@ -67,6 +68,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
     ProgramdetailsPage,
     MyfavoritePage,
     SearchPage,
+    PlayerPage,
     ProgramslistPage,
     BiblePage,
     ChaptersPage,
@@ -75,7 +77,6 @@ import { NativeAudio } from '@ionic-native/native-audio';
   providers: [
     StatusBar,
     SplashScreen,
-    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

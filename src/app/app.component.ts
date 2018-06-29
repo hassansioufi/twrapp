@@ -5,11 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ListenNowPage } from '../pages/listennow/listennow';
+import { PlayerPage } from '../pages/player/player';
 import { NavController } from 'ionic-angular';
 import {ViewChild} from '@angular/core';
 import {Nav} from 'ionic-angular';
 
-import { NativeAudio } from '@ionic-native/native-audio';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ export class MyApp {
   rootPage:any = TabsPage;
   @ViewChild(Nav) navCtrl: Nav;
 
-  constructor(private nativeAudio: NativeAudio,private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
+  constructor(private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
   
 
@@ -31,9 +31,6 @@ export class MyApp {
       source.src = track;
       audio.load();
       audio.play();
-      
-      this.nativeAudio.preloadSimple('uniqueId1', track);
-      this.nativeAudio.play('uniqueId1');
 
     });
 
@@ -42,9 +39,24 @@ export class MyApp {
       return source.src;
     });
 
+    events.subscribe('play:time',() => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement);
+      return audio.currentTime;
+    });
+
+    events.subscribe('track:duration',() => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement);
+      return audio.duration;
+    });
+
     events.subscribe('play:volume',(v) => {
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.volume=v;
+    });
+
+    events.subscribe('set:time',(t) => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement );
+      audio.currentTime=t;
     });
 
     
@@ -67,7 +79,7 @@ export class MyApp {
   }
 
 
-  goToTab2(){
+  goToLiveStream(){
     //this.app.getActiveNav().parent.select(1)
 
     let view = this.navCtrl.getActive();
@@ -78,5 +90,20 @@ export class MyApp {
     }
 
   }
+
+
+
+
+  goToPlayer(){
+
+    let view = this.navCtrl.getActive();
+    if ( view.instance instanceof PlayerPage ){
+      this.navCtrl.remove(1);
+    }else{
+      this.navCtrl.push (PlayerPage);
+    }
+
+  }
+
   
 }
