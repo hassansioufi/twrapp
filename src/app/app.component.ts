@@ -9,6 +9,8 @@ import { NavController } from 'ionic-angular';
 import {ViewChild} from '@angular/core';
 import {Nav} from 'ionic-angular';
 
+import { NativeAudio } from '@ionic-native/native-audio';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,7 +18,7 @@ export class MyApp {
   rootPage:any = TabsPage;
   @ViewChild(Nav) navCtrl: Nav;
 
-  constructor(private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
+  constructor(private nativeAudio: NativeAudio,private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
   
 
@@ -29,6 +31,10 @@ export class MyApp {
       source.src = track;
       audio.load();
       audio.play();
+      
+      this.nativeAudio.preloadSimple('uniqueId1', track);
+      this.nativeAudio.play('uniqueId1');
+
     });
 
     events.subscribe('who:play',() => {
