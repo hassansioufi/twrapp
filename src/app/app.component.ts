@@ -5,16 +5,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Events } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ListenNowPage } from '../pages/listennow/listennow';
+import { NavController } from 'ionic-angular';
+import {ViewChild} from '@angular/core';
+import {Nav} from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = TabsPage;
+  @ViewChild(Nav) navCtrl: Nav;
 
   constructor(private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
-    
+  
+
     events.subscribe('play:pause',(title,track) => {
 
       let audio = (document.getElementById('audio') as HTMLVideoElement );
@@ -55,8 +60,17 @@ export class MyApp {
     
   }
 
+
   goToTab2(){
-    this.app.getActiveNav().parent.select(1)
+    //this.app.getActiveNav().parent.select(1)
+
+    let view = this.navCtrl.getActive();
+    if ( view.instance instanceof ListenNowPage ){
+      this.navCtrl.remove(1);
+    }else{
+      this.navCtrl.push (ListenNowPage);
+    }
+
   }
   
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ListenNowPage } from '../listennow/listennow';
+import { BiblePage } from '../bible/bible';
 import { ProgramsPage } from '../programs/programs';
 import { HomePage } from '../home/home';
 import { MorePage } from '../more/more';
@@ -11,7 +11,7 @@ import { MorePage } from '../more/more';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = ListenNowPage;
+  tab2Root = BiblePage;
   tab3Root = ProgramsPage;
   tab4Root = MorePage;
   

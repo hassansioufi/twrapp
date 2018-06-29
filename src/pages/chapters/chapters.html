@@ -1,0 +1,20 @@
+<ion-content>
+  
+   <div class="page-title">
+        <ion-navbar>
+            {{title}} 
+        </ion-navbar>
+   </div>
+   
+   <div id="chapters-spinner">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+   <div class="tracks-items">
+        <div class="track-item  {{wp==post.mp3 ? 'track-item-active' : ''}}" *ngFor="let post of posts" (click)='playTrack(post.mp3,post.title)'>
+            {{ post.title }}
+        </div>
+      </div>
+
+
+</ion-content>

@@ -1,0 +1,20 @@
+page-bible {
+
+    .bible-list-item{
+        text-align: right;
+        direction: rtl;
+        padding:10px;
+        border-bottom: #bdbdbd solid 1px;
+        color: #0d426d;
+        background-image: url(../../assets/imgs/arrow1.png);
+        background-repeat: no-repeat;
+        background-position: 12px 50%;
+        background-size: 12px;
+        font-size: 16px;
+    }
+  
+    .bible-list-item:active{
+        background-color: #e7e7e7;
+    }
+
+}

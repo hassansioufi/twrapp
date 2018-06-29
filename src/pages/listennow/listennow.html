@@ -1,27 +1,31 @@
-<ion-content padding>
+<ion-content >
 
-    <div class="border-div">
-       
-        <div class="listen-now">
+   <div class="page-title">
+        <ion-navbar>
+            البث المباشر
+        </ion-navbar>
+   </div>
+
+   <div class="pd20">
+        <div class="border-div">
+           <div class="listen-now">
            
             <img src="../../assets/imgs/listennow.jpg" width="100%" />
-
             <div id="listen-now-text"></div>
              
+           </div>
         </div>
-    
     </div>
 
    
+    <div class="pd20 pdt0">
+      <ion-range [(ngModel)]="volume" (ionChange)="volumeControl($event)">
+          <ion-icon range-left color="grey" name="volume-up"></ion-icon>
+      </ion-range>
 
-    <ion-range [(ngModel)]="volume" (ionChange)="volumeControl($event)">
-        <ion-icon range-left color="grey" name="volume-up"></ion-icon>
-    </ion-range>
-
-    <div class="play-btn">
-       <div class="btn-play" (click)="livePlay()"></div>
+      <div class="play-btn">
+         <div class="btn-play" (click)="livePlay()"></div>
+      </div>
     </div>
-
-
 
 </ion-content>

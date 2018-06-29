@@ -7,6 +7,8 @@ import { SearchPage } from '../search/search';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  
+  
 
   constructor(public navCtrl: NavController) {
   

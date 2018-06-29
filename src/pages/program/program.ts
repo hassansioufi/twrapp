@@ -5,9 +5,7 @@ import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Events } from 'ionic-angular';
-
 import { Storage } from '@ionic/storage';
-
 import { AlertController } from 'ionic-angular';
 
 @IonicPage()

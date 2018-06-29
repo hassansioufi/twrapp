@@ -21,6 +21,8 @@ export class ListenNowPage {
     document.getElementById("listen-now-text").innerHTML=document.getElementById("cc_stream_info_song").innerHTML;
     this.whoPlay();
   }
+
+
   
   volumeControl(v){
     this.events.publish('play:volume',(v.value/100));
