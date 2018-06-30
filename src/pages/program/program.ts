@@ -24,11 +24,20 @@ export class ProgramPage {
   wp: any;
 
   constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
+   
 
+
+    this.storage.get('program'+this.programid).then((val) => {
+      if (val){
+        this.posts=val;
+        document.getElementById("program-spinner").style.display="none";
+      }
+    });
 
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
+        this.storage.set('program'+this.programid, data);
         document.getElementById("program-spinner").style.display="none";
      
       },

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -18,6 +19,7 @@ export class AboutPage {
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
+        this.storage.set('about', data);
         refresher.complete();
       },
       err => {
@@ -25,12 +27,20 @@ export class AboutPage {
     );
   }
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http ) {
+  constructor(public navCtrl: NavController,private storage: Storage, public navParams: NavParams, public http: Http ) {
+    
+    this.storage.get('about').then((val) => {
+      if (val){
+        this.posts=val;
+        document.getElementById("about-spinner").style.display="none";
+      }
+    });
 
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
-        document.getElementById("about-spinner").style.display="none";
         this.posts = data;
+        this.storage.set('about', data);
+        document.getElementById("about-spinner").style.display="none";
       },
       err => {
       }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -29,14 +30,22 @@ export class MusicPage {
     );
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,public events: Events ) {
+  constructor(public navCtrl: NavController,private storage: Storage, public navParams: NavParams, public http: Http,public events: Events ) {
     
+    this.storage.get('music').then((val) => {
+      if (val){
+        this.posts=val;
+        document.getElementById("music-spinner").style.display="none";
+      }
+    });
+
     this.whoPlay();
 
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
-        document.getElementById("music-spinner").style.display="none";
         this.posts = data;
+        this.storage.set('music', data);
+        document.getElementById("music-spinner").style.display="none";
       },
       err => {
         /** Error or internet problem **/

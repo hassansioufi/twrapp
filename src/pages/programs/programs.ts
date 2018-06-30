@@ -5,6 +5,7 @@ import { Slides } from 'ionic-angular';
 import { ProgramPage } from '../program/program';
 
 import { Http} from '@angular/http';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -17,18 +18,21 @@ export class ProgramsPage {
   posts: any;
   api="http://arabicprograms.org/api/programs.php";
 
-  constructor(public http: Http,public navCtrl: NavController) {
+  constructor(public http: Http,private storage: Storage,public navCtrl: NavController) {
     
+    this.storage.get('programs').then((val) => {
+      if (val){
+        this.posts=val;
+        this.f1();
+      }
+    });
+
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
-        //document.getElementById("b").style.display="block";
-        document.getElementById("b").classList.add("shw");
-        document.getElementById("spinner").style.display="none";
-        document.getElementById("data").classList.add("shw");
-        document.getElementById("l").classList.add("shw");
-        document.getElementById("r").classList.add("shw");
-       
+        this.storage.set('programs', data);
+        this.f1();
+
       },
       err => {
         /** Error or internet problem **/
@@ -37,6 +41,14 @@ export class ProgramsPage {
 
   }
 
+  f1(){
+    //document.getElementById("b").style.display="block";
+    document.getElementById("b").classList.add("shw");
+    document.getElementById("spinner").style.display="none";
+    document.getElementById("data").classList.add("shw");
+    document.getElementById("l").classList.add("shw");
+    document.getElementById("r").classList.add("shw");
+  }
   goToPrev() {
     if(!this.slides.isBeginning()){
       let currentIndex = this.slides.getActiveIndex();

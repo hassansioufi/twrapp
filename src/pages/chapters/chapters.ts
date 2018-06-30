@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
 
 import { Events } from 'ionic-angular';
 
@@ -17,13 +18,21 @@ export class ChaptersPage {
   api="http://arabicprograms.org/api/chapters.php?id=" + this.navParams.get("id");
   wp: any;
 
-  constructor(public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
+  constructor(public http: Http,private storage: Storage,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
     
+    this.storage.get('chapters'+this.navParams.get("id")).then((val) => {
+      if (val){
+        this.posts=val;
+        document.getElementById("chapters-spinner").style.display="none";
+      }
+    });
+
     this.whoPlay();
 
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
+        this.storage.set('chapters'+this.navParams.get("id"), data);
         document.getElementById("chapters-spinner").style.display="none";
       },
       err => {
