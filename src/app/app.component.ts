@@ -32,6 +32,37 @@ export class MyApp {
       audio.load();
       audio.play();
 
+      if(track==""){
+        let p =document.getElementById('playing') as HTMLInputElement;
+        p.value="-1"
+      }else
+        if(track=="http://viadj.viastreaming.net:7209/;stream/1"){
+          let p =document.getElementById('playing') as HTMLInputElement;
+          p.value="2"
+        }else{
+          let p =document.getElementById('playing') as HTMLInputElement;
+          p.value="1"
+        }
+
+    });
+    
+    events.subscribe('player:playing',() => {
+      let p = (document.getElementById('playing') as HTMLInputElement);
+      return p.value;
+    });
+
+
+    events.subscribe('player:play',() => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement );
+      audio.play();
+      let p =document.getElementById('playing') as HTMLInputElement;
+      p.value="1"
+    });
+
+    events.subscribe('player:pause',() => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement );
+      let p =document.getElementById('playing') as HTMLInputElement;
+        p.value="0"
     });
 
     events.subscribe('who:play',() => {
@@ -81,7 +112,7 @@ export class MyApp {
 
   goToLiveStream(){
     //this.app.getActiveNav().parent.select(1)
-
+   
     let view = this.navCtrl.getActive();
     if ( view.instance instanceof ListenNowPage ){
       this.navCtrl.remove(1);
@@ -95,8 +126,12 @@ export class MyApp {
 
 
   goToPlayer(){
-
-    let view = this.navCtrl.getActive();
+    
+    let p =document.getElementById('playing') as HTMLInputElement;
+    if(p.value=="-1" || p.value=="2")
+     return false;
+    
+     let view = this.navCtrl.getActive();
     if ( view.instance instanceof PlayerPage ){
       this.navCtrl.remove(1);
     }else{
