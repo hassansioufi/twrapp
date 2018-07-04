@@ -9,7 +9,7 @@ import { PlayerPage } from '../pages/player/player';
 import { NavController } from 'ionic-angular';
 import {ViewChild} from '@angular/core';
 import {Nav} from 'ionic-angular';
-
+import { AlertController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ export class MyApp {
   rootPage:any = TabsPage;
   @ViewChild(Nav) navCtrl: Nav;
 
-  constructor(private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
+  constructor(private alertCtrl: AlertController,private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
   
 
@@ -61,6 +61,7 @@ export class MyApp {
 
     events.subscribe('player:pause',() => {
       let audio = (document.getElementById('audio') as HTMLVideoElement );
+      audio.pause();
       let p =document.getElementById('playing') as HTMLInputElement;
         p.value="0"
     });
@@ -95,19 +96,59 @@ export class MyApp {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      var aud = document.getElementById("audio") as HTMLVideoElement ;
-      aud.onended = function() {
-         let source = (document.getElementById('audioSource') as HTMLInputElement);
-         source.src = "";
-      }; 
-
+    
       statusBar.styleDefault();
       splashScreen.hide();
 
-    });
+      });
+ }  
 
-    
-  }
+
+    handleEnd(){
+      let view = this.navCtrl.getActive();
+      if ( view.instance instanceof PlayerPage ){
+        this.navCtrl.remove(1);
+      }
+      this.events.publish('play:pause',"","");
+      this.presentPrompt();
+    }
+
+
+    presentPrompt() {
+      let alert = this.alertCtrl.create({
+        title: 'ما هو رأيك في هذا البرنامج!',
+        inputs: [
+          {
+            name: 'name',
+            placeholder: 'الاسم'
+          },
+          {
+            name: 'email',
+            placeholder: 'البريد الإلكتروني'
+          },
+          {
+            name: 'comments',
+            placeholder: 'تعليقات'
+          }
+        ],
+        buttons: [
+          {
+            text: 'إلغاء',
+            role: 'cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'أرسل',
+            handler: data => {
+              
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
 
 
   goToLiveStream(){

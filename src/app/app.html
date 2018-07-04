@@ -21,7 +21,7 @@
   
 <ion-nav [root]="rootPage"></ion-nav>
 
-<audio controls id="audio" title="" artist="" art="" loop>
+<audio controls id="audio" title="" artist="" art="" (ended)='handleEnd()'>
     <source id="audioSource" src="" type="audio/mpeg">
 </audio>
 

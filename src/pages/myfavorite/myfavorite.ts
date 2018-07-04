@@ -19,11 +19,12 @@ export class MyfavoritePage {
   posts: any;
   api: any;
   wp: any;
+  timer:any;
   
 
   constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
     
-    
+    this.timer=setInterval(() => { this.whoPlay(); }, 1000);
 
   }
 
@@ -92,6 +93,9 @@ export class MyfavoritePage {
     var elem = document.getElementById("fav"+id);
     return elem.parentNode.removeChild(elem);
   }
-
+  
+  ionViewCanLeave() {
+    clearTimeout(this.timer);
+  }
 
 }

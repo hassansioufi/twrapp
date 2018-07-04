@@ -451,3 +451,7 @@ background-image: url("../../assets/imgs/star-white.png");
 .track-item-active{
   background-image: url(../../assets/imgs/pause.png);
 }
+
+.alert-md .alert-title,.alert-ios .alert-title,.alert-input  {
+  direction: rtl;
+}

@@ -17,8 +17,11 @@ export class ChaptersPage {
   posts: any;
   api="http://arabicprograms.org/api/chapters.php?id=" + this.navParams.get("id");
   wp: any;
+  timer:any;
 
   constructor(public http: Http,private storage: Storage,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
+    
+    this.timer=setInterval(() => { this.whoPlay(); }, 1000);
     
     this.storage.get('chapters'+this.navParams.get("id")).then((val) => {
       if (val){
@@ -60,5 +63,8 @@ export class ChaptersPage {
     this.whoPlay();
   }
 
+  ionViewCanLeave() {
+    clearTimeout(this.timer);
+  }
 
 }

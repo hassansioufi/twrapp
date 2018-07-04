@@ -17,7 +17,7 @@ export class MusicPage {
   posts: any;
   wp: any;
   api="http://arabicprograms.org/api/music.php";
-  
+  timer:any;
 
   doRefresh(refresher) {
     this.http.get(this.api).map(res => res.json()).subscribe(
@@ -32,6 +32,9 @@ export class MusicPage {
 
   constructor(public navCtrl: NavController,private storage: Storage, public navParams: NavParams, public http: Http,public events: Events ) {
     
+    
+    this.timer=setInterval(() => { this.whoPlay(); }, 1000);
+
     this.storage.get('music').then((val) => {
       if (val){
         this.posts=val;
@@ -68,6 +71,10 @@ export class MusicPage {
  
   ionViewDidEnter () {
     this.whoPlay();
+  }
+
+  ionViewCanLeave() {
+    clearTimeout(this.timer);
   }
 
 }

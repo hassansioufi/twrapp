@@ -22,10 +22,11 @@ export class ProgramPage {
   posts: any;
   api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
   wp: any;
+  timer:any;
 
   constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
    
-
+    this.timer=setInterval(() => { this.whoPlay(); }, 1000);
 
     this.storage.get('program'+this.programid).then((val) => {
       if (val){
@@ -107,6 +108,10 @@ export class ProgramPage {
       buttons: ['تم']
     });
     alert.present();
+  }
+
+  ionViewCanLeave() {
+    clearTimeout(this.timer);
   }
 
 }

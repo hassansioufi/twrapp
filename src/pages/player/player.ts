@@ -15,7 +15,7 @@ export class PlayerPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events) {
     
-    this.timer=setInterval(() => { this.syncDuration() }, 1000);
+    this.timer=setInterval(() => { this.syncDuration(); }, 1000);
     
   }
   
@@ -62,6 +62,7 @@ export class PlayerPage {
   
   playPause(){
    let p=String(this.events.publish('player:playing'));
+  
    if(p=="1"){
     this.events.publish('player:pause');
     document.getElementsByClassName("btn-play")[0].classList.remove("btn-pause");
@@ -75,7 +76,10 @@ export class PlayerPage {
   ionViewDidLoad(){
     this.getDuration();
     this.syncDuration();
+    this.changebtn();
+  }
 
+  changebtn(){
     let p=String(this.events.publish('player:playing'));
     if(p=="1"){
       document.getElementsByClassName("btn-play")[0].classList.add("btn-pause");
@@ -83,8 +87,6 @@ export class PlayerPage {
     if(p=="0"){
       document.getElementsByClassName("btn-play")[0].classList.remove("btn-pause");
     }
-
-
   }
 
   ionViewCanLeave() {
