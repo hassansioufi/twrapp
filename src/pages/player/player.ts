@@ -65,15 +65,22 @@ export class PlayerPage {
   
    if(p=="1"){
     this.events.publish('player:pause');
-    document.getElementsByClassName("btn-play")[0].classList.remove("btn-pause");
+    document.getElementsByClassName("btn1-play")[0].classList.remove("btn1-pause");
    }
    if(p=="0"){
     this.events.publish('player:play');
-    document.getElementsByClassName("btn-play")[0].classList.add("btn-pause");
+    document.getElementsByClassName("btn1-play")[0].classList.add("btn1-pause");
    }
   }
   
+  ionViewWillEnter() {
+    let p =document.getElementById('playing') as HTMLInputElement;
+    if(p.value=="-1" || p.value=="2")
+    this.navCtrl.remove(1);
+  }
   ionViewDidLoad(){
+    
+    
     this.getDuration();
     this.syncDuration();
     this.changebtn();
@@ -82,10 +89,10 @@ export class PlayerPage {
   changebtn(){
     let p=String(this.events.publish('player:playing'));
     if(p=="1"){
-      document.getElementsByClassName("btn-play")[0].classList.add("btn-pause");
+      document.getElementsByClassName("btn1-play")[0].classList.add("btn1-pause");
     }
     if(p=="0"){
-      document.getElementsByClassName("btn-play")[0].classList.remove("btn-pause");
+      document.getElementsByClassName("btn1-play")[0].classList.remove("btn1-pause");
     }
   }
 
