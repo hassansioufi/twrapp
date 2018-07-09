@@ -1,6 +1,8 @@
 <ion-content>
   <div class="page-title">
+    <ion-navbar>
       <img src="../../assets/imgs/more3-hover.png" > الترانيم 
+    </ion-navbar>
   </div>
 
   <div id="music-spinner">
@@ -14,7 +16,7 @@
   </ion-refresher>
 
   <div class="tracks-items">
-    <div class="track-item  {{wp==post.file ? 'track-item-active' : ''}}" *ngFor="let post of posts" (click)='playTrack(post.file,post.name)'>
+    <div class="track-item  {{wp==post.file ? 'track-item-active' : ''}}" *ngFor="let post of posts" (click)='playTrack(post.file,post.artist,post.name)'>
         {{ post.name }} <span>{{ post.artist }}</span>
     </div>
   </div>

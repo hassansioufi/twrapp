@@ -1,7 +1,9 @@
 <ion-content>
 
   <div class="page-title">
-      <img src="../../assets/imgs/more1-hover.png" > مفضلاتي 
+    <ion-navbar>
+        <img src="../../assets/imgs/more1-hover.png" > مفضلاتي 
+    </ion-navbar>
   </div>
 
   <div class="program-btn-container">
@@ -17,7 +19,7 @@
       <ion-row>
 
           <ion-col col-4>
-              <div class="img-container {{wp==post.file ? 'program-track-item-active' : ''}}"   (click)='playTrack(post.file,post.name)'>
+              <div class="img-container {{wp==post.file ? 'program-track-item-active' : ''}}"   (click)='playTrack(post.file,post.title,post.img,post.program_title)'>
                   <span></span>
                   <img src="{{post.img}}" width="100%" />
               </div>

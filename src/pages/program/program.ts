@@ -54,7 +54,7 @@ export class ProgramPage {
     if(track==this.wp){
       this.events.publish('play:pause',"","");
     }else{
-      this.events.publish('play:pause',title,track);
+      this.events.publish('play:pause',title,this.pagetitle,this.programimg,track);
     }
     this.whoPlay();
   }

@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 import { ProgramPage } from '../program/program';
+import { ProgramslistPage } from '../programslist/programslist';
 
 import { Http} from '@angular/http';
 import { Storage } from '@ionic/storage';
@@ -70,6 +71,10 @@ export class ProgramsPage {
       img: im,
       full_text: ft
     });
+  }
+  
+  goToProgramsList(){
+    this.navCtrl.push(ProgramslistPage);
   }
 
 }

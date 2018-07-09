@@ -22,32 +22,58 @@ export class MyApp {
 
   
 
-    events.subscribe('play:pause',(title,track) => {
+    events.subscribe('play:pause',(title,artist,art,track) => {
 
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.title=title;
+      
+      let a = (document.getElementById('artist') as HTMLInputElement);
+      a.value=artist;
+
+      let ar = (document.getElementById('art') as HTMLInputElement);
+      ar.value=art;
+
 
       let source = (document.getElementById('audioSource') as HTMLInputElement);
       source.src = track;
       audio.load();
       audio.play();
+      
 
-      if(track==""){
+      if(track=="" || !(track)){
         let p =document.getElementById('playing') as HTMLInputElement;
-        p.value="-1"
+        p.value="-1";
+        a.value="";
+        ar.value="";
       }else
         if(track=="http://viadj.viastreaming.net:7209/;stream/1"){
           let p =document.getElementById('playing') as HTMLInputElement;
-          p.value="2"
+          p.value="2";
+          a.value="";
+          ar.value="";
         }else{
           let p =document.getElementById('playing') as HTMLInputElement;
           p.value="1"
         }
-
     });
     
     events.subscribe('player:playing',() => {
       let p = (document.getElementById('playing') as HTMLInputElement);
+      return p.value;
+    });
+
+    events.subscribe('player:title',() => {
+      let audio = (document.getElementById('audio') as HTMLVideoElement );
+      return audio.title;
+    });
+
+    events.subscribe('player:artist',() => {
+      let p = (document.getElementById('artist') as HTMLInputElement);
+      return p.value;
+    });
+
+    events.subscribe('player:art',() => {
+      let p = (document.getElementById('art') as HTMLInputElement);
       return p.value;
     });
 

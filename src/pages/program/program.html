@@ -3,7 +3,7 @@
   <div class="page-title">
     <ion-navbar>
         {{pagetitle}}
-      </ion-navbar>
+    </ion-navbar>
   </div>
 
 
@@ -22,7 +22,7 @@
       <ion-row>
 
           <ion-col col-4>
-              <div class="img-container {{wp==post.file ? 'program-track-item-active' : ''}}"   (click)='playTrack(post.file,post.name)'>
+              <div class="img-container {{wp==post.file ? 'program-track-item-active' : ''}}"   (click)='playTrack(post.file,post.title)'>
                   <span></span>
                   <img src="{{programimg}}" width="100%" />
               </div>

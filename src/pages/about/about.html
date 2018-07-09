@@ -2,7 +2,9 @@
 <ion-content>
 
  <div class="page-title">
-      <img src="../../assets/imgs/more5-hover.png" >  تعرّف علينا 
+    <ion-navbar>
+        <img src="../../assets/imgs/more5-hover.png" >  تعرّف علينا
+    </ion-navbar>   
  </div>  
  
   <div id="about-spinner">
@@ -19,7 +21,7 @@
   <div class="about-items">
     <div class="about-item" *ngFor="let post of posts">
        <div class="about-item-title">{{ post.title }}</div>
-       <div class="about-item-text">{{ post.text }}</div>
+       <div class="about-item-text" [innerHtml]="post.text"></div>
     </div>
   </div>
 

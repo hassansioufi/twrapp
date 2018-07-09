@@ -16,6 +16,7 @@ export class PlayerPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public events: Events) {
     
     this.timer=setInterval(() => { this.syncDuration(); }, 1000);
+
     
   }
   
@@ -77,10 +78,18 @@ export class PlayerPage {
     let p =document.getElementById('playing') as HTMLInputElement;
     if(p.value=="-1" || p.value=="2")
     this.navCtrl.remove(1);
+
+    let art=document.getElementById("art-output") as HTMLImageElement;
+    art.src=String(this.events.publish('player:art'));
+
+    let artist=document.getElementById("artist-output") as HTMLElement;
+    artist.innerHTML=String(this.events.publish('player:artist'));
+
+    let title=document.getElementById("title-output") as HTMLElement;
+    title.innerHTML=String(this.events.publish('player:title'));
+
   }
   ionViewDidLoad(){
-    
-    
     this.getDuration();
     this.syncDuration();
     this.changebtn();
