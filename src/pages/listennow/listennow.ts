@@ -30,9 +30,9 @@ export class ListenNowPage {
 
   livePlay(){
     if(this.wp==this.ls){
-     this.events.publish('play:pause',"","");
+     this.events.publish('play:pause',"","","","");
     }else{
-     this.events.publish('play:pause',"",this.ls);
+     this.events.publish('play:pause',"","","",this.ls);
     }
     this.whoPlay();
   }

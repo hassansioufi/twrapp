@@ -25,6 +25,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { UniquePage } from '../pages/unique/unique';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ProgramslistPage,
     BiblePage,
     ChaptersPage,
+    UniquePage,
     TabsPage
   ],
   imports: [
@@ -72,6 +74,7 @@ import { IonicStorageModule } from '@ionic/storage';
     ProgramslistPage,
     BiblePage,
     ChaptersPage,
+    UniquePage,
     TabsPage
   ],
   providers: [

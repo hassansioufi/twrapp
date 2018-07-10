@@ -48,9 +48,9 @@ export class ChaptersPage {
 
   playTrack(track: string,title: string){
     if(track==this.wp){
-      this.events.publish('play:pause',"","");
+      this.events.publish('play:pause',"","","","");
     }else{
-      this.events.publish('play:pause',title,track);
+      this.events.publish('play:pause',title,this.title,"../../assets/imgs/bible-audio.jpg",track);
     }
     this.whoPlay();
   }

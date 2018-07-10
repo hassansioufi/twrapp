@@ -45,15 +45,18 @@ export class MyApp {
         p.value="-1";
         a.value="";
         ar.value="";
+        this.removePlayLogo();
       }else
         if(track=="http://viadj.viastreaming.net:7209/;stream/1"){
           let p =document.getElementById('playing') as HTMLInputElement;
           p.value="2";
           a.value="";
           ar.value="";
+          this.removePlayLogo();
         }else{
           let p =document.getElementById('playing') as HTMLInputElement;
           p.value="1"
+          this.setPlayLogo();
         }
     });
     
@@ -142,7 +145,7 @@ export class MyApp {
 
     presentPrompt() {
       let alert = this.alertCtrl.create({
-        title: 'ما هو رأيك في هذا البرنامج!',
+        title: 'اسمح لنا أن نعرف ما هو رأيك !',
         inputs: [
           {
             name: 'name',
@@ -189,7 +192,16 @@ export class MyApp {
 
   }
 
+  
+  setPlayLogo(){
+    let hl=document.getElementById("header-logo") as HTMLImageElement;
+    hl.src="../../assets/imgs/logo-play.png";
+  }
 
+  removePlayLogo(){
+    let hl=document.getElementById("header-logo") as HTMLImageElement;
+    hl.src="../../assets/imgs/logo.png";
+  }
 
 
   goToPlayer(){

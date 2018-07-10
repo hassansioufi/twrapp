@@ -1,60 +1,62 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProgramdetailsPage } from '../programdetails/programdetails';
 import { Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Events } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-program',
-  templateUrl: 'program.html',
+  selector: 'page-unique',
+  templateUrl: 'unique.html',
 })
-export class ProgramPage {
+export class UniquePage {
 
-  pagetitle=this.navParams.get("title");
-  programid=this.navParams.get("id");
-  programimg=this.navParams.get("img");
-  programfulltext=this.navParams.get("full_text");
   posts: any;
-  api="http://arabicprograms.org/api/program.php?id=" + this.navParams.get("id");
+  pagetitle="حلقات مميزة";
+  api="http://arabicprograms.org/api/unique.php";
   wp: any;
   timer:any;
+  storagename="unique";
 
-  constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
-   
+  constructor(public alertCtrl: AlertController,public http: Http,public navCtrl: NavController,private storage: Storage, public navParams: NavParams,public events: Events) {
+
     this.timer=setInterval(() => { this.whoPlay(); }, 1000);
+    
+    if(this.navParams.get("type") && this.navParams.get("type")){
+      this.api="http://arabicprograms.org/api/newest.php";
+      this.pagetitle="حلقات جديدة";
+      this.storagename="newest";
+    }
 
-    this.storage.get('program'+this.programid).then((val) => {
+    this.storage.get(this.storagename).then((val) => {
       if (val){
         this.posts=val;
-        document.getElementById("program-spinner").style.display="none";
+        document.getElementById("unique-spinner").style.display="none";
       }
     });
 
     this.http.get(this.api).map(res => res.json()).subscribe(
       data => {
         this.posts = data;
-        this.storage.set('program'+this.programid, data);
-        document.getElementById("program-spinner").style.display="none";
+        this.storage.set(this.storagename, data);
+        document.getElementById("unique-spinner").style.display="none";
      
       },
       err => {
         /** Error or internet problem **/
       }
     );
-    
+
   }
 
-
-  playTrack(track: string,title: string){
+  playTrack(track: string,title: string,artist: string,art:string){
     if(track==this.wp){
       this.events.publish('play:pause',"","","","");
     }else{
-      this.events.publish('play:pause',title,this.pagetitle,this.programimg,track);
+      this.events.publish('play:pause',title,artist,art,track);
     }
     this.whoPlay();
   }
@@ -66,15 +68,7 @@ export class ProgramPage {
   ionViewDidEnter () {
     this.whoPlay();
   }
-  
-  goToProgramDetails(){
-    this.navCtrl.push(ProgramdetailsPage,{
-      id: this.programid,
-      title: this.pagetitle,
-      full_text: this.programfulltext,
-    });
-  }
-  
+
   addtoFavorite(id){
     this.storage.get('mf').then((val) => {
       
@@ -113,5 +107,7 @@ export class ProgramPage {
   ionViewCanLeave() {
     clearTimeout(this.timer);
   }
+
+
 
 }

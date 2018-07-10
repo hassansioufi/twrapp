@@ -31,7 +31,7 @@ export class MyfavoritePage {
 
   playTrack(track: string,title: string,img: string,program_title: string){
     if(track==this.wp){
-      this.events.publish('play:pause',"","");
+      this.events.publish('play:pause',"","","","");
     }else{
       this.events.publish('play:pause',title,program_title,img,track);
     }

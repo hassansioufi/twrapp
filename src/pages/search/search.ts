@@ -22,16 +22,12 @@ export class SearchPage {
    
   }
 
-  myFunction(){
-
-
-  }
-
-  playTrack(track: string,title: string){
+ 
+  playTrack(track: string,title: string,artist: string,art:string){
     if(track==this.wp){
-      this.events.publish('play:pause',"","");
+      this.events.publish('play:pause',"","","","");
     }else{
-      this.events.publish('play:pause',title,track);
+      this.events.publish('play:pause',title,artist,art,track);
     }
     this.whoPlay();
   }
