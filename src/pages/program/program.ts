@@ -16,6 +16,7 @@ import { AlertController } from 'ionic-angular';
 export class ProgramPage {
 
   pagetitle=this.navParams.get("title");
+  programlink=this.navParams.get("link");
   programid=this.navParams.get("id");
   programimg=this.navParams.get("img");
   programfulltext=this.navParams.get("full_text");
@@ -25,7 +26,8 @@ export class ProgramPage {
   timer:any;
 
   constructor(public alertCtrl: AlertController,private storage: Storage,public http: Http,public navCtrl: NavController, public navParams: NavParams,public events: Events) {
-   
+
+
     this.timer=setInterval(() => { this.whoPlay(); }, 1000);
 
     this.storage.get('program'+this.programid).then((val) => {
@@ -72,6 +74,7 @@ export class ProgramPage {
       id: this.programid,
       title: this.pagetitle,
       full_text: this.programfulltext,
+      link:this.programlink
     });
   }
   

@@ -39,12 +39,13 @@ export class ProgramslistPage {
 
   }
 
-  goToProgram(i,t,im,ft){
+  goToProgram(i,t,im,ft,l){
     this.navCtrl.push(ProgramPage,{
       id: i,
       title: t,
       img: im,
-      full_text: ft
+      full_text: ft,
+      link:l
     });
   }
 

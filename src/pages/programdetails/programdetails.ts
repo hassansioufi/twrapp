@@ -10,8 +10,12 @@ export class ProgramdetailsPage {
  
   title=this.navParams.get("title");
   text=this.navParams.get("full_text");
+  link=this.navParams.get("link");
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+ 
+
   }
 
 }

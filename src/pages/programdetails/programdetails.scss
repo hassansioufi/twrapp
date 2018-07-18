@@ -7,4 +7,22 @@ page-programdetails {
         padding:15px;
         color: #0d426d;
     }
+
+    .program-btn-container{
+        text-align: center;
+        padding: 12px;
+        direction: rtl;
+    }
+    
+    .program-btn{
+        background-color: #0e497a;
+        color: #02c3e7;
+        display: inline-block;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 3px;
+        border-bottom: solid #02c3e7 2px;
+    }
+
+    
 }
