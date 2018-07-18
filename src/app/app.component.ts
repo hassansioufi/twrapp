@@ -195,12 +195,12 @@ export class MyApp {
   
   setPlayLogo(){
     let hl=document.getElementById("header-logo") as HTMLImageElement;
-    hl.src="../../assets/imgs/logo-play.png";
+    hl.src="assets/imgs/logo-play.png";
   }
 
   removePlayLogo(){
     let hl=document.getElementById("header-logo") as HTMLImageElement;
-    hl.src="../../assets/imgs/logo.png";
+    hl.src="assets/imgs/logo.png";
   }
 
 

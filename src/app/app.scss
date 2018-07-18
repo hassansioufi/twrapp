@@ -331,7 +331,7 @@ position: relative;
 }
 
 .episode-item:nth-child(2n){
-background-image: url("../../assets/imgs/bg3.png")
+background-image: url("../assets/imgs/bg3.png")
 }
 
 
@@ -352,7 +352,7 @@ position: relative;
 .img-container span{
 width: 27px;
 height: 27px;
-background-image: url("../../assets/imgs/play1.png");
+background-image: url("../assets/imgs/play1.png");
 background-size: 100% 100%;
 position: absolute;
 top:50%;
@@ -361,7 +361,7 @@ transform: translate(-50%,-50%);
 }
 
 .program-track-item-active span{
-background-image: url("../../assets/imgs/pause1.png");
+background-image: url("../assets/imgs/pause1.png");
 }
 
 .favorite{
@@ -371,7 +371,7 @@ left: 0px;
 height: 100%;
 width: 28px;
 background-color: #eceded;
-background-image: url("../../assets/imgs/star-gray.png");
+background-image: url("../assets/imgs/star-gray.png");
 background-position: center;
 background-size: 72% auto;
 background-repeat: no-repeat;
@@ -384,7 +384,7 @@ opacity: 0.75;
 
 .episode-item:nth-child(2n) .favorite{
 background-color: #0c3d64;
-background-image: url("../../assets/imgs/star-white.png");
+background-image: url("../assets/imgs/star-white.png");
 }
 
 .back-button{
@@ -432,7 +432,7 @@ background-image: url("../../assets/imgs/star-white.png");
   border-bottom: 1px solid #d1d1d1;
   font-size: 16px;
   background-position: left 10px center;
-  background-image: url(../../assets/imgs/play.png);
+  background-image: url(../assets/imgs/play.png);
   background-repeat: no-repeat;
   background-size: 35px;
 }
@@ -449,7 +449,7 @@ background-image: url("../../assets/imgs/star-white.png");
 }
 
 .track-item-active{
-  background-image: url(../../assets/imgs/pause.png);
+  background-image: url(../assets/imgs/pause.png);
 }
 
 .alert-md .alert-title,.alert-ios .alert-title,.alert-input  {

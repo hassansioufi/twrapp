@@ -50,7 +50,7 @@ export class ChaptersPage {
     if(track==this.wp){
       this.events.publish('play:pause',"","","","");
     }else{
-      this.events.publish('play:pause',title,this.title,"../../assets/imgs/bible-audio.jpg",track);
+      this.events.publish('play:pause',title,this.title,"assets/imgs/bible-audio.jpg",track);
     }
     this.whoPlay();
   }

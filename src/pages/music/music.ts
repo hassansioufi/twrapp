@@ -60,7 +60,7 @@ export class MusicPage {
     if(track==this.wp){
       this.events.publish('play:pause',"","","","");
     }else{
-      this.events.publish('play:pause',title,artist,"../../assets/imgs/taranim.jpg",track);
+      this.events.publish('play:pause',title,artist,"assets/imgs/taranim.jpg",track);
     }
     this.whoPlay();
   }

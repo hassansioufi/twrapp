@@ -8,7 +8,7 @@ page-programs {
   }
 
   .program-bg{
-      background-image: url("../../assets/imgs/bg2.png");
+      background-image: url("../assets/imgs/bg2.png");
       padding: 11px;
   }
 
@@ -59,22 +59,22 @@ page-programs {
   }
 
   #l{
-    background-image: url("../../assets/imgs/larrow.png");
+    background-image: url("../assets/imgs/larrow.png");
     left: 7px;
     opacity: 0;
    }
    #l:active{
-    background-image: url("../../assets/imgs/larrow-hover.png");
+    background-image: url("../assets/imgs/larrow-hover.png");
    }
 
    #r{
-    background-image: url("../../assets/imgs/rarrow.png");
+    background-image: url("../assets/imgs/rarrow.png");
     right: 7px;
     opacity: 0;
  }
 
  #r:active{
-    background-image: url("../../assets/imgs/rarrow-hover.png");
+    background-image: url("../assets/imgs/rarrow-hover.png");
  }
 
  #spinner{
@@ -91,7 +91,7 @@ page-programs {
 }
 
 .btn-container div{
-    background-image: url("../../assets/imgs/btn.png");
+    background-image: url("../assets/imgs/btn.png");
     background-size: 100% 100%;
     color: #093157;
     display: inline;
@@ -100,7 +100,7 @@ page-programs {
 }
 
 .btn-container div:active {
-    background-image: url("../../assets/imgs/btn-hover.png");
+    background-image: url("../assets/imgs/btn-hover.png");
 }
 
 .ib{
