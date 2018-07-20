@@ -18,14 +18,16 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,private musicControls: MusicControls) {
   
-    this.p();
+   
 
   }
 
+  ionViewDidEnter () {
+    this.p();
+  }
+
   p(){
-   
-  alert('p');
-  
+    alert('gg');
     this.musicControls.create({
       track       : 'Time is Running Out',        // optional, default : ''
       artist      : 'Muse',                       // optional, default : ''
@@ -62,72 +64,61 @@ export class HomePage {
       closeIcon: 'media_close',
       notificationIcon: 'notification'
      });
+  
+  // Start listening for events
+  // The plugin will run the events function each time an event is fired
+  this.musicControls.listen();
+
+  }
 
 
+  events(action) {
 
-     this.musicControls.subscribe().subscribe(action => {
-
-      function events(action) {
-        const message = JSON.parse(action).message;
-            switch(message) {
-                case 'music-controls-next':
-                    // Do something
-                    break;
-                case 'music-controls-previous':
-                    // Do something
-                    break;
-                case 'music-controls-pause':
-                    // Do something
-                    break;
-                case 'music-controls-play':
-                    // Do something
-                    break;
-                case 'music-controls-destroy':
-                    // Do something
-                    break;
-   
-            // External controls (iOS only)
-            case 'music-controls-toggle-play-pause' :
-                    // Do something
-                    break;
-            case 'music-controls-seek-to':
-              const seekToInSeconds = JSON.parse(action).position;
-              this.musicControls.updateElapsed({
-                elapsed: seekToInSeconds,
-                isPlaying: true
-              });
-              // Do something
-              break;
-            case 'music-controls-skip-forward':
-              // Do something
-              break;
-            case 'music-controls-skip-backward':
-              // Do something
-              break;
-   
-                // Headset events (Android only)
-                // All media button events are listed below
-                case 'music-controls-media-button' :
-                    // Do something
-                    break;
-                case 'music-controls-headset-unplugged':
-                    // Do something
-                    break;
-                case 'music-controls-headset-plugged':
-                    // Do something
-                    break;
-                default:
-                    break;
-            }
-        }
-      })
-
-      this.musicControls.listen(); // activates the observable above
-      this.musicControls.updateIsPlaying(true);
-
-
-
-
+    const message = JSON.parse(action).message;
+    switch(message) {
+      case 'music-controls-next':
+        // Do something
+        break;
+      case 'music-controls-previous':
+        // Do something
+        break;
+      case 'music-controls-pause':
+        // Do something
+        break;
+      case 'music-controls-play':
+        // Do something
+        break;
+      case 'music-controls-destroy':
+        // Do something
+        break;
+  
+      // External controls (iOS only)
+        case 'music-controls-toggle-play-pause' :
+        // Do something
+        break;
+        case 'music-controls-seek-to':
+        const seekToInSeconds = JSON.parse(action).position;
+        MusicControls.updateElapsed({
+          elapsed: seekToInSeconds,
+          isPlaying: true
+        });
+        // Do something
+        break;
+  
+      // Headset events (Android only)
+      // All media button events are listed below
+      case 'music-controls-media-button' :
+        // Do something
+        break;
+      case 'music-controls-headset-unplugged':
+        // Do something
+        break;
+      case 'music-controls-headset-plugged':
+        // Do something
+        break;
+      default:
+        break;
+    }
   }
 
 
