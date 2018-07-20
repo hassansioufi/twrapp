@@ -27,7 +27,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { MusicControls } from '@ionic-native/music-controls';
 import { IonicStorageModule } from '@ionic/storage';
 import { UniquePage } from '../pages/unique/unique';
-import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
 
 @NgModule({
   declarations: [
@@ -83,7 +82,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    StreamingMedia,
+    MusicControls,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
