@@ -33,7 +33,7 @@ export class SocialPage {
     allowInlineMediaPlayback : 'no',//iOS only 
     presentationstyle : 'pagesheet',//iOS only 
     fullscreen : 'yes',//Windows only    
-};
+  }; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private theInAppBrowser: InAppBrowser) {
 

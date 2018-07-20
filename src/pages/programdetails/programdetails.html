@@ -5,9 +5,9 @@
       </ion-navbar>
     </div>
   <div class="program-detail" [innerHtml]="text"></div>
-
-  <div class="program-btn-container">
-    <a href="{{link}}" class="program-btn">موقع البرنامج</a>
+  
+  <div *ngIf=" link != ''" (click)="openWithInAppBrowser(link)" class="program-btn-container">
+    <span class="program-btn">موقع البرنامج</span>
   </div>
 
 
