@@ -24,9 +24,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { MusicControls } from '@ionic-native/music-controls';
 import { IonicStorageModule } from '@ionic/storage';
 import { UniquePage } from '../pages/unique/unique';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { UniquePage } from '../pages/unique/unique';
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    MusicControls,
+    BackgroundMode,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

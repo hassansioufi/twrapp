@@ -44,7 +44,7 @@ export class ProgramsPage {
 
   f1(){
     //document.getElementById("b").style.display="block";
-    document.getElementById("b").classList.add("shw");
+    //document.getElementById("b").classList.add("shw");
     document.getElementById("spinner").style.display="none";
     document.getElementById("data").classList.add("shw");
     document.getElementById("l").classList.add("shw");

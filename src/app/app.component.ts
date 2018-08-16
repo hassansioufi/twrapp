@@ -6,10 +6,13 @@ import { Events } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ListenNowPage } from '../pages/listennow/listennow';
 import { PlayerPage } from '../pages/player/player';
-import { NavController } from 'ionic-angular';
 import {ViewChild} from '@angular/core';
 import {Nav} from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { Http} from '@angular/http';
+import { Network } from '@ionic-native/network';
+import {FormControl} from '@angular/forms';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,12 +21,21 @@ export class MyApp {
   rootPage:any = TabsPage;
   @ViewChild(Nav) navCtrl: Nav;
 
-  constructor(private alertCtrl: AlertController,private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
+  constructor(private network: Network,public http: Http,private backgroundMode: BackgroundMode,private alertCtrl: AlertController,private app: App,platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public events: Events) {
 
   
+    let disconnectSubscription = this.network.onDisconnect().subscribe(() => {
+      this.alertIt('خطأ','لا يوجد إتصال بالانترنت');
+    });
+
+
 
     events.subscribe('play:pause',(title,artist,art,track) => {
-
+      /* for sending opinion */
+      let artst = (document.getElementById('artist') as HTMLInputElement);
+      let aud = (document.getElementById('audio') as HTMLVideoElement );
+      let t=artst.value + "/" + aud.title;
+      
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.title=title;
       
@@ -41,11 +53,16 @@ export class MyApp {
       
 
       if(track=="" || !(track)){
+        
+
         let p =document.getElementById('playing') as HTMLInputElement;
         p.value="-1";
         a.value="";
         ar.value="";
         this.removePlayLogo();
+        this.backgroundMode.disable();
+
+        this.presentPrompt(t);
       }else
         if(track=="http://viadj.viastreaming.net:7209/;stream/1"){
           let p =document.getElementById('playing') as HTMLInputElement;
@@ -53,10 +70,12 @@ export class MyApp {
           a.value="";
           ar.value="";
           this.removePlayLogo();
+          this.backgroundMode.enable();
         }else{
           let p =document.getElementById('playing') as HTMLInputElement;
           p.value="1"
           this.setPlayLogo();
+          this.backgroundMode.enable();
         }
     });
     
@@ -84,6 +103,7 @@ export class MyApp {
     events.subscribe('player:play',() => {
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.play();
+      this.backgroundMode.enable();
       let p =document.getElementById('playing') as HTMLInputElement;
       p.value="1"
     });
@@ -91,6 +111,12 @@ export class MyApp {
     events.subscribe('player:pause',() => {
       let audio = (document.getElementById('audio') as HTMLVideoElement );
       audio.pause();
+
+      let a = (document.getElementById('artist') as HTMLInputElement);
+      let t=a.value + "/" + audio.title;
+      this.presentPrompt(t);
+      
+      this.backgroundMode.disable();
       let p =document.getElementById('playing') as HTMLInputElement;
         p.value="0"
     });
@@ -138,12 +164,14 @@ export class MyApp {
       if ( view.instance instanceof PlayerPage ){
         this.navCtrl.remove(1);
       }
-      this.events.publish('play:pause',"","");
-      this.presentPrompt();
+
+      this.events.publish('play:pause',"","");         
+     
     }
 
 
-    presentPrompt() {
+    presentPrompt(t) {
+      console.log(t);
       let alert = this.alertCtrl.create({
         title: 'اسمح لنا أن نعرف ما هو رأيك !',
         inputs: [
@@ -153,11 +181,15 @@ export class MyApp {
           },
           {
             name: 'email',
-            placeholder: 'البريد الإلكتروني'
+            placeholder: '*البريد الإلكتروني'
+          },
+          {
+            name: 'country',
+            placeholder: 'البلد'
           },
           {
             name: 'comments',
-            placeholder: 'تعليقات'
+            placeholder: '*تعليقات'
           }
         ],
         buttons: [
@@ -165,13 +197,19 @@ export class MyApp {
             text: 'إلغاء',
             role: 'cancel',
             handler: data => {
-              console.log('Cancel clicked');
+             // console.log('Cancel clicked');
             }
           },
           {
             text: 'أرسل',
             handler: data => {
-              
+
+              if(data.comments.length<3 || !this.validateEmail(data.email)){
+                this.alertIt("خطأ","خطأ في كتابة البريد الإلكتروني أو التعليقات");
+                return false;
+              }
+
+               this.sendEmail(data.name,data.email,data.comments,data.country,t);
             }
           }
         ]
@@ -179,7 +217,30 @@ export class MyApp {
       alert.present();
     }
 
+  sendEmail(n,e,c,ct,t){
+    var link = 'http://arabicprograms.org/api/opinion.php';
+    var myData = JSON.stringify({name: n,email: e, comments: c,country: ct,track: t});
 
+    this.http.post(link, myData)
+   .subscribe(data => {
+      //alert (data["_body"]);
+      this.alertIt('','تم إرسال الرسالة بنجاح');     
+   }, error => {
+    this.alertIt('خطأ','فشلت العملية ، يرجى المحاولة مرة أخرى في وقت لاحق');
+  
+   });
+  
+  }
+  
+  alertIt(t,s){
+    let alert = this.alertCtrl.create({
+      title: t,
+      subTitle: s,
+      buttons: ['تابع']
+    });
+    alert.present();
+  }
+  
   goToLiveStream(){
     //this.app.getActiveNav().parent.select(1)
    
@@ -218,6 +279,11 @@ export class MyApp {
     }
 
   }
+
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
   
 }
