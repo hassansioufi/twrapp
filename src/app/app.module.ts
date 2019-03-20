@@ -28,6 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { UniquePage } from '../pages/unique/unique';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { Network } from '@ionic-native/network';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { Network } from '@ionic-native/network';
     InAppBrowser,
     BackgroundMode,
     Network,
+    GoogleAnalytics,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

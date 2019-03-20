@@ -10,7 +10,9 @@ import { Events } from 'ionic-angular';
 export class ListenNowPage {
 
   private volume=50;
-  ls="http://viadj.viastreaming.net:7209/;stream/1";
+  //ls="http://viadj.viastreaming.net:7209/;stream/1";
+  ls="https://streamer.radio.co/sb1e7301c2/listen";
+  
   wp: any;
 
   constructor(public navCtrl: NavController,public events: Events) {
@@ -19,6 +21,7 @@ export class ListenNowPage {
 
   ionViewDidEnter () {
     document.getElementById("listen-now-text").innerHTML=document.getElementById("cc_stream_info_song").innerHTML;
+    document.getElementById("listen-now-text").innerHTML="";
     this.whoPlay();
   }
 

@@ -64,7 +64,7 @@ export class MyApp {
 
         this.presentPrompt(t);
       }else
-        if(track=="http://viadj.viastreaming.net:7209/;stream/1"){
+        if(track=="https://streamer.radio.co/sb1e7301c2/listen"){
           let p =document.getElementById('playing') as HTMLInputElement;
           p.value="2";
           a.value="";

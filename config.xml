@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="org.arabicprograms.twrarabic" id="org.arabicprograms.twrarabic" ios-CFBundleIdentifier="org.arabicprograms.TWR" version="3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-packageName="org.arabicprograms.twrarabic" android-versionCode="30102" id="org.arabicprograms.twrarabic" ios-CFBundleIdentifier="org.arabicprograms.TWR" version="3.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TWR Arabic</name>
     <description>TWR Arabic</description>
     <author email="info@arabicprograms.org/" href="http://arabicprograms.org/">TWR Arabic</author>
@@ -89,6 +89,7 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <plugin name="cordova-plugin-streaming-media" spec="~2.1.2" />
     <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
-    <engine name="android" spec="~7.0.0" />
     <engine name="ios" spec="~4.5.4" />
+    <plugin name="cordova-plugin-google-analytics" spec="^1.8.6" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
