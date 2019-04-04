@@ -80,7 +80,7 @@ export class PlayerPage {
     this.navCtrl.remove(1);
 
     let art=document.getElementById("art-output") as HTMLImageElement;
-    alert(this.events.publish('player:art'));
+    //alert(this.events.publish('player:art'));
     art.src=String(this.events.publish('player:art'));
 
     let artist=document.getElementById("artist-output") as HTMLElement;

@@ -20,8 +20,8 @@ export class ListenNowPage {
   }
 
   ionViewDidEnter () {
-    document.getElementById("listen-now-text").innerHTML=document.getElementById("cc_stream_info_song").innerHTML;
-    document.getElementById("listen-now-text").innerHTML="";
+   // document.getElementById("listen-now-text").innerHTML=document.getElementById("cc_stream_info_song").innerHTML;
+    //document.getElementById("listen-now-text").innerHTML="";
     this.whoPlay();
   }
 
